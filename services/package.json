@@ -1,0 +1,19 @@
+{
+  "name": "@quran-ai/services",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend services: content pipeline, analysis orchestrator, shared domain types.",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "test": "node --test \"**/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

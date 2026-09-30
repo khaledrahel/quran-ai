@@ -1,0 +1,73 @@
+# Supabase local development configuration.
+#
+# SCOPE: local development only. Contains NO secrets, NO credentials, and NO
+# production configuration. Staging and production are configured in their own
+# dashboards and are never represented here (ADR-0003).
+#
+# This file does not create, modify, or connect to any live Supabase project.
+
+project_id = "quran-ai"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+# Deliberately low. Learner-facing queries must paginate rather than bulk-fetch.
+max_rows = 200
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.pooler]
+enabled = false
+
+[studio]
+enabled = true
+port = 54323
+
+# Local mail catcher. No real email is ever sent from local or staging.
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+# Recitation audio is short. A low cap limits accidental bulk upload during
+# development and mirrors the expected production constraint (ADR-0008).
+file_size_limit = "10MiB"
+
+[auth]
+enabled = true
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = ["http://127.0.0.1:3000"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+
+# The parent is the account owner. Learners never authenticate independently
+# (domain model section 1), so no anonymous or learner-facing sign-in exists.
+enable_anonymous_sign_ins = false
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+
+# SMS/phone auth is not part of the MVP and stays off until a decision is made.
+[auth.sms]
+enable_signup = false
+enable_confirmations = false
+
+# No third-party auth providers are enabled. Adding one is a decision requiring
+# an ADR and PO approval, not a config edit.
+
+[analytics]
+enabled = false
+
+[edge_runtime]
+enabled = true
+policy = "oneshot"
