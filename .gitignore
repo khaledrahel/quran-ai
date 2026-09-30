@@ -1,0 +1,58 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.keystore
+*.jks
+service-account*.json
+google-services.json
+GoogleService-Info.plist
+
+# Supabase
+supabase/.temp/
+supabase/.branches/
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.npm/
+
+# Dart / Flutter
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+**/ios/Pods/
+**/ios/.symlinks/
+**/android/.gradle/
+**/android/local.properties
+
+# Audio — never commit recordings of any kind
+*.wav
+*.m4a
+*.mp3
+*.aac
+*.ogg
+*.opus
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+
+# Local scratch
+*.tmp
+*.log
+tmp/
+scratch/
