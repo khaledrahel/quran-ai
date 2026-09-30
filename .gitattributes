@@ -1,0 +1,25 @@
+# Normalize line endings. Prevents CRLF/LF churn across Windows and CI.
+* text=auto eol=lf
+
+# Windows-only scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+
+# Audio must never be committed (see .gitignore), but mark binary if ever forced
+*.wav binary
+*.m4a binary
+*.mp3 binary
+
+# Qur'an datasets are byte-sensitive. NEVER apply text normalization to them.
+data/quran/** -text binary
